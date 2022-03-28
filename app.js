@@ -21,10 +21,16 @@ function initialRender() {
     btnContainerTemp.classList.add("initBtns");
     container.appendChild(btnContainerTemp);
     btnContainerTemp.innerHTML = `
-        <h1>Please Select a Difficulty Level:</h1>
-        <button class='btn'>Easy</button>
-        <button class='btn'>Medium</button>
-        <button class='btn'>Hard</button>
+    <div class="row d-flex justify-content-center"> 
+        <div class="col-10 text-center">    
+            <h4 class="text-center mb-4 mt-5">Please Select a Difficulty Level:</h4>
+            <div class="btn-difficulty-wrapper mt-2">
+                <button class='btn'>Easy</button>
+                <button class='btn'>Medium</button>
+                <button class='btn'>Hard</button>
+            </div>
+        </div>
+    </div>
     `
     //Add event listeners to the answer selection buttons
     let btnList = btnContainerTemp.querySelectorAll(".btn");
@@ -40,7 +46,7 @@ function selectDifficulty(e){
     let btnContainer = document.querySelector(".initBtns");
     btnContainer.style.display = 'none';
     toggleShow.style.display = 'block';
-    //SHOULD i MOVE THE ABOVE ELSEWHERE? SINCE IT'S NOT READY TO RENDER YET ANYWAYS?
+
     if(selection === "Easy"){
         sendApiRequest(difficultyEasy);
     }
@@ -70,7 +76,7 @@ let answerList = document.querySelector('#answer-list');
 let checkBtn = document.querySelector('#submit');
 let response = document.querySelector('#message');
 let questionNumber = document.querySelector('.progress');
-let correct = document.querySelector('.correct-answers');
+let numberCorrect = document.querySelector(".number-correct");
 
 //EVENT LISTENERS
 checkBtn.addEventListener('click', checkAnswer);
@@ -84,11 +90,15 @@ function useApiData(data) {
         finalContainer.classList.add('.final');
         container.appendChild(finalContainer);
         finalContainer.innerHTML = `
-        <h1>Congratulations, you completed the Quiz!</h1>
-        <h4>Your Score:</h4>
-        <p>${correctQuestions}/10</p>
-        <p>Play Again?</p>
-        <button class='btn btn-reload'>New Quiz</button>
+        <div class="row d-flex justify-content-center">
+            <div class="col-11 text-center">
+                <h2 class="px-2 py-3">Congratulations, you completed the Quiz!</h2>
+                <h4>Your Final Score:</h4>
+                <p class="final-score">${correctQuestions}/10</p>
+                <p>Play Again?</p>
+                <button class='btn btn-reload'>New Quiz</button>
+            </div>
+        </div>
         `
         let btnReload = finalContainer.querySelector(".btn-reload");
         btnReload.addEventListener('click', function () {document.location.reload (true);}, false);
@@ -104,7 +114,6 @@ function useApiData(data) {
     randomization();
 }
 
-
 //Randomize the Index
 function randomization(){
     let unrandomizedArray = [1, 2, 3, 4];
@@ -119,8 +128,29 @@ function randomization(){
 
 function renderQA() {
     //render stats
-    questionNumber.textContent = `Questions Completed: ${currQIndex}/10`;
-    correct.textContent = `Correct Answers: ${correctQuestions}`;
+    questionNumber.innerHTML = `
+    <p class="progress-done">Questions Completed: ${currQIndex}/10
+    </p>
+    <span class="progress-bar"></span>
+    `;
+    // let progressDone = document.querySelector('.progress-done');
+    let progressBar = document.querySelector('.progress-bar');
+    progressBar.style.width = Math.round(parseInt(currQIndex) * 10) + '%';
+
+
+    // numberCorrect
+    numberCorrect.innerHTML = `
+    <p class="correct-done">Correct Answers: ${correctQuestions}
+    </p>
+    <span class="correct-bar"></span>
+    `;
+
+    let correctBar = document.querySelector('.correct-bar');
+    correctBar.style.width = Math.round(parseInt(correctQuestions) * 10) + '%';
+    console.log(Math.round(parseInt(correctQuestions) * 10) + '%');
+
+    // correct.textContent = `Correct Answers: ${correctQuestions}`;
+
     //Render question
     question.innerHTML = `Question: ${data.results[currQIndex].question}`;
 
@@ -141,29 +171,44 @@ function renderQA() {
 
 function selectAnswer(e){
     e.preventDefault();
+    console.log(e);
     currSelection = e.target.innerText;
-    console.log(currSelection);
+    console.log(currSelection);    
 }
 
 function displayResult(message) {
-    response.textContent = message;
+    response.innerHTML = `
+    <div class="quest-result-wrapper text-center">
+        <p>Your Answer: <span>${currSelection}</span></p>
+        <p>Result:</p>
+        <p class="message">${message}</p>
+    </div>
+    `;
+    let messageTxt = response.querySelector('.message');
+    if(message === 'Correct!'){
+        messageTxt.style.color = 'green';
+    }
+    if(message === 'Incorrect'){
+        messageTxt.style.color = 'red';
+    }
     response.style.display = 'block';
     answerList.style.display = 'none';
+    checkBtn.style.display = 'none';
     //remove alert
     setTimeout(function () {
         response.textContent = '';
         response.style.display = 'none';
         answerList.style.display = 'block';
+        checkBtn.style.display = 'block';
         if (message === 'Please make a selection.'){
         return;
         } else {
-        console.log('time to move on');
         currQIndex++;
         currSelection = '';
         randomizedIndex = [];
         useApiData(data);
         }
-    }, 1000);
+    }, 2000);
 }
 
 //After submit, check the currSelection answer.
@@ -176,8 +221,9 @@ function checkAnswer(e){
 
     if(currSelection === answers[1]){
         correctQuestions++;
-        displayResult('correct!');
+        displayResult('Correct!');
     } else {
-        displayResult('incorrect');
+        displayResult('Incorrect');
     }
 }
+

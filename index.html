@@ -9,52 +9,50 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
 
-    <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="./styles.css" />
-
-
 
 </head>
 
 <body>
-    <h1>
-        Mythology Trivia Quiz
-    </h1>
 
     <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="col-11 col-sm-10 col-md-8 col-lg-6 col-xl-5" >
+        <div class="row d-flex justify-content-center mt-5 mb-2">
+            <div class="col-11 col-sm-10 col-md-8 col-lg-7 col-xl-6 content-wrapper py-5">
+                <h1 class="text-center mb-4 mx-1">
+                    Mythology Trivia Quiz
+                </h1>
                 <div id="toggleShow">
-                    <div class="row">
-                        <div class="col">
+                    <div class="row d-flex justify-content-center mb-3 mt-4">
+                        <div class="col-7">
                             <div id="status">
-                                <p class="progress"></p>
-                                <p class="correct-answers"></p>
+                                <div class="progress">
+                                    <p class="progress-done">
+                                    </p>
+                                </div>
+                                <div class="number-correct">
+                                    <p class="correct-done"></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <h1 id="question"></h1>
+                    <div class="row d-flex justify-content-center mb-3">
+                        <div class="col-9 text-center mt-2">
+                            <h4 id="question"></h4>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
+                    <div class="row d-flex justify-content-center mt-2">
+                        <div class="col-8">
                             <div id="answer-list">
-                                <!-- <button class="answer-1 btn"></button>
-                                <button class="answer-2 btn"></button>
-                                <button class="answer-3 btn"></button>
-                                <button class="answer-4 btn"></button> -->
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-9">
                             <div id="">
                                 <button class="btn" type="submit" id="submit">
                                     Check Answer
@@ -78,6 +76,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script src="./app.js" defer></script>
 
 </body>
