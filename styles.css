@@ -39,6 +39,8 @@ h1 {
 
 .btn-difficulty-wrapper .btn, #answer-list button {
     background: linear-gradient(to left, #a8abcf 50%, #cbc5d1 50%) right;
+    /* background: linear-gradient(to left, #a8abcf 50%, #bbd5e4 50%) right; */
+    background: linear-gradient(to left, #a8abcf 50%, #3d5a80 50%) right;
     background-size: 220%;
     border: 1px solid white;
     width: 100%;
@@ -48,7 +50,7 @@ h1 {
 .btn-difficulty-wrapper .btn:hover, #answer-list button:hover, #answer-list button:focus {
     background-position: left;
     transform: translateX(1rem);
-    color: #595959;
+    /* color: #595959; */
 }
 
 #answer-list button:focus, #submit:hover {
@@ -69,19 +71,26 @@ h1 {
 
 #submit, .btn-reload {
     background-color: #cbc5d1;
+    background-color: #c4bec9;
     /* border: 1px solid gray; */
     font-size: 2.7rem;
     width: 100%;
     text-align: center;
     margin-top: 25px;
     color: #403b42;
+    /* color: white; */
     text-shadow: 3px 3px 1px rgb(179, 174, 174);
+    background-color: #cbc5d1;
+    text-shadow: 2px 3px 1px rgb(231, 229, 229);
+    /* text-shadow: 1px 1px 1px #403b42; */
 } 
 
 #submit:hover, .btn-reload:hover {
     background-color: #cbc5d1;
+    background-color: #c4bec9;
+    font-weight: bold;
     transform: translateY(-.25rem);
-    text-shadow: 1px 3px 1px rgb(231, 229, 229);
+    text-shadow: 2px 3px 1px rgb(231, 229, 229);
     font-weight: normal;
 }
 

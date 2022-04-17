@@ -24,9 +24,9 @@ function initialRender() {
         <div class="col-10 text-center">    
             <h4 class="text-center mb-4 mt-5">Please Select a Difficulty Level:</h4>
             <div class="btn-difficulty-wrapper mt-2">
-                <button class='btn'>Easy</button>
-                <button class='btn'>Medium</button>
-                <button class='btn'>Hard</button>
+                <button type="button" class='btn'>Easy</button>
+                <button type="button" class='btn'>Medium</button>
+                <button type="button" class='btn'>Hard</button>
             </div>
         </div>
     </div>
@@ -112,7 +112,7 @@ function useApiData(data) {
                 <h4>Your Final Score:</h4>
                 <p class="final-score">${correctQuestions}/10</p>
                 <p>Play Again?</p>
-                <button class='btn btn-reload'>New Quiz</button>
+                <button type="button" class='btn btn-reload'>New Quiz</button>
             </div>
         </div>
         `
@@ -172,7 +172,7 @@ function renderQA() {
         //Render randomized answers
     answerList.innerHTML = `
         ${randomizedIndex.map((randIndex, index) => `
-            <button class="btn btn-answer" i=${index}>${answers[randIndex]}</button>
+            <button type="button" class="btn btn-answer" i=${index}>${answers[randIndex]}</button>
         `).join("")}
     `;
 
