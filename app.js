@@ -10,7 +10,6 @@ const difficultyEasy = `https://opentdb.com/api.php?amount=10&category=20&diffic
 const difficultyMedium = `https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple`;
 const difficultyHard = `https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=multiple`;
 
-
 window.onload = initialRender;
 
 function initialRender() {
@@ -31,7 +30,8 @@ function initialRender() {
             </div>
         </div>
     </div>
-    `
+    `;
+
     //Add event listeners to the answer selection buttons
     let btnList = btnContainerTemp.querySelectorAll(".btn");
     console.log(btnList);
@@ -58,18 +58,34 @@ function selectDifficulty(e){
     }
 }
 
-//An asynchronous function to fetch data from the API.
+//Fetch data from the API.
 async function sendApiRequest(difficultyLevel){
+    //Immediately display a loading message.
+    response.innerHTML = `
+    <h2 class="loading text-center pb-5">Loading</h2>
+    `
+    //Hide everything else while loading:
+    $('#status').hide();
+    $('#question').hide();
+    $('#submit-btn').hide();
+    $('answer-list').hide();
+
+    try {
     let response = await fetch(difficultyLevel);
-    console.log(response);
     data = await response.json();//get our data.
-    console.log(data);
+    if(data){
     useApiData(data);//call the useApiData function and pass in the data we received.
+    }
+    } catch (error) {
+        console.log(error);
+        $('#submit-btn').hide();
+        answerList.innerHTML = `
+        <h4 class="text-center">Sorry, the quiz is not available right now. Please try again later.</h4>
+        `
+    }
 }
 
-
 //QUERY SELECTORS
-
 let toggleShow = document.querySelector('#toggleShow');
 let question = document.querySelector('#question');
 let answerList = document.querySelector('#answer-list');
@@ -137,7 +153,6 @@ function renderQA() {
     let progressBar = document.querySelector('.progress-bar');
     progressBar.style.width = Math.round(parseInt(currQIndex) * 10) + '%';
 
-
     // numberCorrect
     numberCorrect.innerHTML = `
     <p class="correct-done">Correct Answers: ${correctQuestions}
@@ -154,7 +169,7 @@ function renderQA() {
     //Render question
     question.innerHTML = `Question: ${data.results[currQIndex].question}`;
 
-    //Render randomized answers
+        //Render randomized answers
     answerList.innerHTML = `
         ${randomizedIndex.map((randIndex, index) => `
             <button class="btn btn-answer" i=${index}>${answers[randIndex]}</button>
@@ -167,6 +182,13 @@ function renderQA() {
     for (let btn of nodeList) {
         btn.addEventListener('click', selectAnswer, false);
     }
+
+    //Hide the temporary loading message and show all other fields
+    $('#message').hide();
+    $('#status').show();
+    $('#question').show();
+    $('#submit-btn').show();
+    $('answer-list').show();
 }
 
 function selectAnswer(e){

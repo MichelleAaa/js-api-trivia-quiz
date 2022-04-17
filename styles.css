@@ -61,8 +61,15 @@ h1 {
     color: #adabab;
 }
 
+.loading {
+    color: gray;
+    font-size: 3rem;
+    font-style: italic;
+}
+
 #submit, .btn-reload {
     background-color: #cbc5d1;
+    /* border: 1px solid gray; */
     font-size: 2.7rem;
     width: 100%;
     text-align: center;
