@@ -1,20 +1,33 @@
+:root {
+    --main-white: white;
+    --main-light: #d9d9d9;
+    --main-light-2: #dc9788;
+    --main-medium: #5b73df;
+    --main-medium-2: #5f4945;
+    --main-darkest: #363b54;
+    --bg-body: #fbfcfb;
+    --box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    --border: 1px solid rgba(190, 190, 191, .4);
+    --font-small: 'IBM Plex Sans', sans-serif;
+    --font-large: 'Poppins', sans-serif;
+}
+
 body {
-    background-color:rgba(253, 246, 246, 0.75);
-    font-family: 'Comfortaa', cursive;
+    background-color:var(--bg-body);
     font-weight: bold;
-    color: #605864;
+    font-family: var(--font-small);
 }
 
 h1 {
     font-size: 3.5rem;
     font-weight: bold;
-    color: #605864;
-    text-shadow: 3px 3px 1px rgb(192, 190, 190);
+    color: var(--main-light-2);
+    text-shadow: 1px 1px 1px rgb(192, 190, 190);
 }
 
 .content-wrapper {
-    border: 1px solid rgb(192, 190, 190);
-    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+    border: var(--border);
+    box-shadow: var(--box-shadow);
     transition: .2s ease-in-out;
 }
 
@@ -26,7 +39,6 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: #02758b;
 }
 
 .btn-difficulty-wrapper .btn, #answer-list button, #submit {
@@ -34,69 +46,58 @@ h1 {
     margin-bottom: 6px;
     min-height: 70px;
     font-size: 2.7rem;
-    color: white;
+    color: var(--main-white);
 }
 
 .btn-difficulty-wrapper .btn, #answer-list button {
-    background: linear-gradient(to left, #a8abcf 50%, #cbc5d1 50%) right;
-    /* background: linear-gradient(to left, #a8abcf 50%, #bbd5e4 50%) right; */
-    background: linear-gradient(to left, #a8abcf 50%, #3d5a80 50%) right;
+    background: linear-gradient(to left, var(--main-medium) 50%, var(--main-light) 50%) right;
     background-size: 220%;
-    border: 1px solid white;
+    border: 1px solid var(--main-white);
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.6rem;
+    font-family: var(--font-large);
 }
 
 .btn-difficulty-wrapper .btn:hover, #answer-list button:hover, #answer-list button:focus {
     background-position: left;
     transform: translateX(1rem);
-    /* color: #595959; */
+    color: var(--main-medium-2);
+    font-weight: bold;
 }
 
 #answer-list button:focus, #submit:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+    box-shadow: var(--box-shadow);
 }
 
 .initBtns h4, h4 {
     font-size: 1.5rem;
-    font-style: italic;
-    color: #adabab;
+    color: var(--main-medium-2);
 }
 
 .loading {
-    color: gray;
+    color: var(--main-medium-2);
     font-size: 3rem;
     font-style: italic;
 }
 
 #submit, .btn-reload {
-    background-color: #cbc5d1;
-    background-color: #c4bec9;
-    /* border: 1px solid gray; */
     font-size: 2.7rem;
     width: 100%;
     text-align: center;
     margin-top: 25px;
-    color: #403b42;
-    /* color: white; */
-    text-shadow: 3px 3px 1px rgb(179, 174, 174);
-    background-color: #cbc5d1;
-    text-shadow: 2px 3px 1px rgb(231, 229, 229);
-    /* text-shadow: 1px 1px 1px #403b42; */
+    background-color: var(--main-light-2);
+    color: var(--main-white);
 } 
 
 #submit:hover, .btn-reload:hover {
-    background-color: #cbc5d1;
-    background-color: #c4bec9;
     font-weight: bold;
     transform: translateY(-.25rem);
-    text-shadow: 2px 3px 1px rgb(231, 229, 229);
     font-weight: normal;
 }
 
 .quest-result-wrapper{
     font-size: 1.7rem;
-    color: gray;
+    color: var(--main-light);
 }
 
 .message {
@@ -108,16 +109,11 @@ h1 {
 .quest-result-wrapper p:nth-child(1) span {
     font-weight: bold;
     font-size: 2rem;
-    color: #a499a9;
+    color: var(--main-darkest);
 }
 
-/* .quest-result-wrapper p:nth-child(2){
-    color: gray;
-} */
-
 .progress, .number-correct {
-    background: transparent;
-    background-color: rgb(252, 238, 238);
+    background-color: var(--main-light);
     z-index: -10;
     margin-bottom: 4px;
     position: relative;
@@ -133,6 +129,7 @@ h1 {
     font-size: 1rem;
     height: 10px;
     font-weight: bold;
+    color: var(--main-darkest);
 }
 
 .progress-bar, .correct-bar {
@@ -157,7 +154,7 @@ h1 {
 .final-score {
     font-size: 4.4rem;
     font-weight: bold;
-    color: #a8abcf;
+    color: var(--main-medium);
 }
 
 .btn-reload {

@@ -6,9 +6,9 @@ let randomizedIndex = [];
 let answers;
 let currSelection = '';
 
-const difficultyEasy = `https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple`;
-const difficultyMedium = `https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple`;
-const difficultyHard = `https://opentdb.com/api.php?amount=10&category=20&difficulty=hard&type=multiple`;
+const difficultyEasy = 'https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple';
+const difficultyMedium = 'https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple';
+const difficultyHard = 'https://opentdb.com/api.php?amount=10&category=18&difficulty=hard&type=multiple';
 
 window.onload = initialRender;
 
@@ -73,9 +73,7 @@ async function sendApiRequest(difficultyLevel){
     try {
     let response = await fetch(difficultyLevel);
     data = await response.json();//get our data.
-    if(data){
     useApiData(data);//call the useApiData function and pass in the data we received.
-    }
     } catch (error) {
         console.log(error);
         $('#submit-btn').hide();
