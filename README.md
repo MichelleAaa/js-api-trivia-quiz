@@ -1,16 +1,24 @@
-## Computing Trivia Quiz
+# Computing Trivia Quiz
 
-A web-based application featuring a computing trivia quiz. Built with JavaScript, Bootstrap, and CSS. Makes use of the Open Trivia Database(by Pixeltail Games LLC, located at https://opentdb.com). 
+A web-based application featuring a computing trivia quiz. Built with JavaScript, Bootstrap, and CSS. Makes use of the Open Trivia Database (by Pixeltail Games LLC, located at https://opentdb.com). 
 
 ## Project Screen Shot(s)
 
+Quiz Start Screen
 ![Quiz Start Screen](img/Quiz-1.png "To start the quiz, please select a difficulty level.")
+To start the quiz, please select a difficulty level.
 
+Trivia Question Screen
 ![Trivia Question Screen](img/Quiz-2.png "You will have four options to choose from.")
+You will have four options to choose from.
 
+Individual Question Result Screen
 ![Individual Question Result Screen](img/Quiz-3.png "You will be notified if your answer was correct or incorrect.")
+You will be notified if your answer was correct or incorrect.
 
+Status Bars
 ![Status Bars](img/Quiz-3.png "While taking the quiz, the status bars at the top will change based on the number of questions already completed and the current number of correct answers.")
+While taking the quiz, the status bars at the top will change based on the number of questions already completed and the current number of correct answers.
 
 ## Launch Instructions
 
