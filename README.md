@@ -2,7 +2,7 @@
 
 A web-based application featuring a computing trivia quiz. Built with JavaScript, Bootstrap, and CSS. Makes use of the Open Trivia Database (by Pixeltail Games LLC, located at https://opentdb.com). 
 
-## Project Screen Shot(s)
+## Project Screen Shots
 
 
 Quiz Start Screen
@@ -28,7 +28,7 @@ You will be notified if your answer was correct or incorrect.
 
 Status Bars
 
-![Status Bars](img/Quiz-3.png "While taking the quiz, the status bars at the top will change based on the number of questions already completed and the current number of correct answers.")
+![Status Bars](img/Quiz-4.png "While taking the quiz, the status bars at the top will change based on the number of questions already completed and the current number of correct answers.")
 
 While taking the quiz, the status bars at the top will change based on the number of questions already completed and the current number of correct answers.
 
