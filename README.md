@@ -35,9 +35,9 @@ While taking the quiz, the status bars at the top will change based on the numbe
 
 ## Launch Instructions
 
-Clone this repository to your local machine. 
+Clone or download this repository to your local machine. 
 
-In VS Code, right click on the index.html file and select "Open With Live Server". The application will launch in your web browser.
+In the file folder, double click on the index.html file. The application will launch in your web browser.
 
 **Please note that this application requires an internet connection.  
 
