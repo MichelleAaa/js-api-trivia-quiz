@@ -44,3 +44,7 @@ In the file folder, double click on the index.html file. The application will la
 ## Reflection
 
 I built this project while studying JavaScript to get familiar with how to build web-based applications. This specific project includes the use of an API and DOM manipulation. One of the challenges of this project included learning how data flows through a JavaScript application.
+
+## References
+
+- 3.5 - Trivia API - https://www.youtube.com/watch?v=SgJ_femmsfg (For basic guidance on how to work with the Trivia API.)
