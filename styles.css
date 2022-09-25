@@ -90,7 +90,6 @@ h1 {
 } 
 
 #submit:hover, .btn-reload:hover {
-    font-weight: bold;
     transform: translateY(-.25rem);
     font-weight: normal;
 }
@@ -140,8 +139,7 @@ h1 {
     border-radius: 15px;
     margin-bottom: 3px;
     min-height: 20px;
-    position: absolute;
-    
+    position: absolute;    
 }
 
 .progress-bar {

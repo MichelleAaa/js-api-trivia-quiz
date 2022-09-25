@@ -10,12 +10,26 @@ const difficultyEasy = 'https://opentdb.com/api.php?amount=10&category=18&diffic
 const difficultyMedium = 'https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple';
 const difficultyHard = 'https://opentdb.com/api.php?amount=10&category=18&difficulty=hard&type=multiple';
 
+//Query Selectors
+let toggleShow = document.querySelector('#toggleShow');
+let question = document.querySelector('#question');
+let answerList = document.querySelector('#answer-list');
+let submitBtn = document.querySelector('#submit-btn');
+let checkBtn = document.querySelector('#submit');
+let response = document.querySelector('#message');
+let statusId = document.querySelector('#status');
+let questionNumber = document.querySelector('.progress');
+let numberCorrect = document.querySelector(".number-correct");
+
+//Event Listener
+checkBtn.addEventListener('click', checkAnswer);
+
 window.onload = initialRender;
 
 function initialRender() {
     toggleShow.style.display = 'none';
     let container = toggleShow.parentElement;
-    //Create a temporary element
+    //Create a Temporary Element
     let btnContainerTemp = document.createElement('div');
     btnContainerTemp.classList.add("initBtns");
     container.appendChild(btnContainerTemp);
@@ -32,9 +46,8 @@ function initialRender() {
     </div>
     `;
 
-    //Add event listeners to the answer selection buttons
+    //Add Event Listeners to the Answer Selection Buttons
     let btnList = btnContainerTemp.querySelectorAll(".btn");
-    console.log(btnList);
     for (let btn of btnList) {
         btn.addEventListener('click', selectDifficulty, false);
     }
@@ -58,44 +71,33 @@ function selectDifficulty(e){
     }
 }
 
-//Fetch data from the API.
+//Fetch Data From the API.
 async function sendApiRequest(difficultyLevel){
-    //Immediately display a loading message.
+    //Immediately Display a Loading Message
     response.innerHTML = `
     <h2 class="loading text-center pb-5">Loading</h2>
     `
-    //Hide everything else while loading:
-    $('#status').hide();
-    $('#question').hide();
-    $('#submit-btn').hide();
-    $('answer-list').hide();
+    //Hide Everything Else While Loading
+    statusId.style.display = 'none';
+    question.style.display = 'none';
+    submitBtn.style.display = 'none';
+    answerList.style.display = 'none';
 
     try {
     let response = await fetch(difficultyLevel);
-    data = await response.json();//get our data.
-    useApiData(data);//call the useApiData function and pass in the data we received.
+    data = await response.json();
+    useApiData(data);
     } catch (error) {
         console.log(error);
-        $('#submit-btn').hide();
+        submitBtn.style.display = 'none';
+
         answerList.innerHTML = `
         <h4 class="text-center">Sorry, the quiz is not available right now. Please try again later.</h4>
         `
     }
 }
 
-//QUERY SELECTORS
-let toggleShow = document.querySelector('#toggleShow');
-let question = document.querySelector('#question');
-let answerList = document.querySelector('#answer-list');
-let checkBtn = document.querySelector('#submit');
-let response = document.querySelector('#message');
-let questionNumber = document.querySelector('.progress');
-let numberCorrect = document.querySelector(".number-correct");
-
-//EVENT LISTENERS
-checkBtn.addEventListener('click', checkAnswer);
-
-//PROCESS API DATA
+//Process API Data
 function useApiData(data) {
     if (currQIndex === 10){
         toggleShow.style.display = 'none';
@@ -141,17 +143,16 @@ function randomization(){
 }
 
 function renderQA() {
-    //render stats
+    //Render Stats
     questionNumber.innerHTML = `
-    <p class="progress-done">Questions Completed: ${currQIndex}/10
+    <p class="progress-done">Completed: ${currQIndex}/10
     </p>
     <span class="progress-bar"></span>
     `;
-    // let progressDone = document.querySelector('.progress-done');
+
     let progressBar = document.querySelector('.progress-bar');
     progressBar.style.width = Math.round(parseInt(currQIndex) * 10) + '%';
 
-    // numberCorrect
     numberCorrect.innerHTML = `
     <p class="correct-done">Correct Answers: ${correctQuestions}
     </p>
@@ -160,40 +161,34 @@ function renderQA() {
 
     let correctBar = document.querySelector('.correct-bar');
     correctBar.style.width = Math.round(parseInt(correctQuestions) * 10) + '%';
-    console.log(Math.round(parseInt(correctQuestions) * 10) + '%');
 
-    // correct.textContent = `Correct Answers: ${correctQuestions}`;
-
-    //Render question
+    //Render Question
     question.innerHTML = `Question: ${data.results[currQIndex].question}`;
 
-        //Render randomized answers
+    //Render Randomized Answers
     answerList.innerHTML = `
         ${randomizedIndex.map((randIndex, index) => `
             <button type="button" class="btn btn-answer" i=${index}>${answers[randIndex]}</button>
         `).join("")}
     `;
 
-    //Add event listeners to the answer selection buttons
+    //Add Event Listeners to the Answer Selection Buttons
     let nodeList = answerList.querySelectorAll(".btn");
-    console.log(nodeList);
     for (let btn of nodeList) {
         btn.addEventListener('click', selectAnswer, false);
     }
 
-    //Hide the temporary loading message and show all other fields
-    $('#message').hide();
-    $('#status').show();
-    $('#question').show();
-    $('#submit-btn').show();
-    $('answer-list').show();
+    //Hide the Temporary Loading Message and Show All Other Fields
+    response.style.display = 'none';
+    statusId.style.display = 'block';
+    question.style.display = 'block';
+    submitBtn.style.display = 'block';
+    answerList.style.display = 'block';
 }
 
 function selectAnswer(e){
     e.preventDefault();
-    console.log(e);
-    currSelection = e.target.innerText;
-    console.log(currSelection);    
+    currSelection = e.target.innerText;  
 }
 
 function displayResult(message) {
@@ -214,7 +209,8 @@ function displayResult(message) {
     response.style.display = 'block';
     answerList.style.display = 'none';
     checkBtn.style.display = 'none';
-    //remove alert
+
+    //Remove Alert
     setTimeout(function () {
         response.textContent = '';
         response.style.display = 'none';
@@ -231,7 +227,7 @@ function displayResult(message) {
     }, 2000);
 }
 
-//After submit, check the currSelection answer.
+//After Submit, Check the currSelection Answer
 function checkAnswer(e){
     e.preventDefault();
     if(currSelection === ''){
@@ -246,4 +242,3 @@ function checkAnswer(e){
         displayResult('Incorrect');
     }
 }
-
