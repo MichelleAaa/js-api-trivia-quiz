@@ -48,3 +48,4 @@ I built this project while studying JavaScript to get familiar with how to build
 ## References
 
 - 3.5 - Trivia API - https://www.youtube.com/watch?v=SgJ_femmsfg (For basic guidance on how to work with the Trivia API.)
+- Open Trivia Database - https://opentdb.com/api_config.php (API utilized to pull questions for the quiz.)
