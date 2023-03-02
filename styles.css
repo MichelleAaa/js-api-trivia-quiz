@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 :root {
     --main-white: white;
     --main-light: #d9d9d9;
@@ -13,7 +20,7 @@
 }
 
 body {
-    background-color:var(--bg-body);
+    background-color: var(--bg-body);
     font-weight: bold;
     font-family: var(--font-small);
 }
@@ -27,21 +34,38 @@ h1 {
 
 .content-wrapper {
     border: var(--border);
+    -webkit-box-shadow: var(--box-shadow);
     box-shadow: var(--box-shadow);
+    -webkit-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
     transition: .2s ease-in-out;
 }
 
 .content-wrapper:hover {
+    -webkit-transform: scale(1.02);
+    -ms-transform: scale(1.02);
     transform: scale(1.02);
 }
 
-.btn-difficulty-wrapper, #answer-list {
+.btn-difficulty-wrapper,
+#answer-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 
-.btn-difficulty-wrapper .btn, #answer-list button, #submit {
+.btn-difficulty-wrapper .btn,
+#answer-list button,
+#submit {
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
     transition: all .4s;
     margin-bottom: 6px;
     min-height: 70px;
@@ -49,7 +73,10 @@ h1 {
     color: var(--main-white);
 }
 
-.btn-difficulty-wrapper .btn, #answer-list button {
+.btn-difficulty-wrapper .btn,
+#answer-list button {
+    background: -webkit-gradient(linear, right top, left top, color-stop(50%, var(--main-medium)), color-stop(50%, var(--main-light))) right;
+    background: -o-linear-gradient(right, var(--main-medium) 50%, var(--main-light) 50%) right;
     background: linear-gradient(to left, var(--main-medium) 50%, var(--main-light) 50%) right;
     background-size: 220%;
     border: 1px solid var(--main-white);
@@ -58,18 +85,25 @@ h1 {
     font-family: var(--font-large);
 }
 
-.btn-difficulty-wrapper .btn:hover, #answer-list button:hover, #answer-list button:focus {
+.btn-difficulty-wrapper .btn:hover,
+#answer-list button:hover,
+#answer-list button:focus {
     background-position: left;
+    -webkit-transform: translateX(1rem);
+    -ms-transform: translateX(1rem);
     transform: translateX(1rem);
     color: var(--main-medium-2);
     font-weight: bold;
 }
 
-#answer-list button:focus, #submit:hover {
+#answer-list button:focus,
+#submit:hover {
+    -webkit-box-shadow: var(--box-shadow);
     box-shadow: var(--box-shadow);
 }
 
-.initBtns h4, h4 {
+.initBtns h4,
+h4 {
     font-size: 1.5rem;
     color: var(--main-medium-2);
 }
@@ -80,16 +114,20 @@ h1 {
     font-style: italic;
 }
 
-#submit, .btn-reload {
+#submit,
+.btn-reload {
     font-size: 2.7rem;
     width: 100%;
     text-align: center;
     margin-top: 25px;
     background-color: var(--main-light-2);
     color: var(--main-white);
-} 
+}
 
-#submit:hover, .btn-reload:hover {
+#submit:hover,
+.btn-reload:hover {
+    -webkit-transform: translateY(-.25rem);
+    -ms-transform: translateY(-.25rem);
     transform: translateY(-.25rem);
     font-weight: normal;
 }
@@ -111,21 +149,29 @@ h1 {
     color: var(--main-darkest);
 }
 
-.progress, .number-correct {
+.progress,
+.number-correct {
     background-color: var(--main-light);
     z-index: -10;
     margin-bottom: 4px;
     position: relative;
     min-height: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-	align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
     border-radius: 15px;
 }
 
-.progress-done, .correct-done {
+.progress-done,
+.correct-done {
     position: absolute;
     left: 50%;
     top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     z-index: 10;
     font-size: 1rem;
@@ -134,22 +180,29 @@ h1 {
     color: var(--main-darkest);
 }
 
-.progress-bar, .correct-bar {
+.progress-bar,
+.correct-bar {
     z-index: -1;
     border-radius: 15px;
     margin-bottom: 3px;
     min-height: 20px;
-    position: absolute;    
+    position: absolute;
 }
 
 .progress-bar {
+    background: -webkit-gradient(linear, right top, left top, from(#ddebf8), to(#bec4f0));
+    background: -o-linear-gradient(right, #ddebf8, #bec4f0);
     background: linear-gradient(to left, #ddebf8, #bec4f0);
-	box-shadow: 0 3px 3px -5px #5c86b6, 0 2px 5px #acb9f3;
+    -webkit-box-shadow: 0 3px 3px -5px #5c86b6, 0 2px 5px #acb9f3;
+    box-shadow: 0 3px 3px -5px #5c86b6, 0 2px 5px #acb9f3;
 }
 
 .correct-bar {
+    background: -webkit-gradient(linear, right top, left top, from(#e5f3e6), to(#a2dda0));
+    background: -o-linear-gradient(right, #e5f3e6, #a2dda0);
     background: linear-gradient(to left, #e5f3e6, #a2dda0);
-	box-shadow: 0 3px 3px -5px #4ea75a, 0 2px 5px #a6ccac;
+    -webkit-box-shadow: 0 3px 3px -5px #4ea75a, 0 2px 5px #a6ccac;
+    box-shadow: 0 3px 3px -5px #4ea75a, 0 2px 5px #a6ccac;
 }
 
 .final-score {
